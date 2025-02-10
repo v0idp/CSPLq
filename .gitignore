@@ -4,3 +4,4 @@ ndkpath.txt
 *.cmake
 !cmake/*.cmake
 *.qmod
+.cache/
