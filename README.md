@@ -1,6 +1,6 @@
 # Custom Patches & Loader (Quest Version)
 
-Custom Samples and Patches Loader (CSPL) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso
+Custom Samples and Patches Loader (CSPLq) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso
 
 Use `qpm s build` to build
 Same goes for `qpm s copy` and `qpm s qmod`

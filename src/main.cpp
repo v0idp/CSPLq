@@ -1,13 +1,5 @@
 #include "main.hpp"
-
 #include "scotland2/shared/modloader.h"
-
-#include "VROSC/SynthController.hpp"
-
-MAKE_HOOK_MATCH(SynthController_SynthsDataLoaded, &VROSC::SynthController::SynthsDataLoaded, void, VROSC::SynthController* self, VROSC::InstrumentDataController*  dataController) {
-  PaperLogger.info("SynthsDataLoaded called!");
-  SynthController_SynthsDataLoaded(self, dataController);
-}
 
 static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 // Stores the ID and version of our mod, and is sent to

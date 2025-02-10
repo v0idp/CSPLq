@@ -21,3 +21,5 @@
 Configuration &getConfig();
 
 constexpr auto PaperLogger = Paper::ConstLoggerContext("csplq");
+
+#include "SynthControllerPatch.hpp"
