@@ -1,0 +1,70 @@
+{
+  "sharedDir": "shared",
+  "dependenciesDir": "extern",
+  "version": "0.1.0",
+  "info": {
+    "name": "Custom Samples & Patches Loader",
+    "id": "csplq",
+    "author": "void*",
+    "version": "0.1.0",
+    "description": "Custom Samples and Patches Loader (CSPL) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",
+    "url": null,
+    "additionalData": {
+      "overrideSoName": "libcsplq.so",
+      "cmake": true
+    }
+  },
+  "workspace": {
+    "scripts": {
+      "build": [
+        "pwsh ./scripts/build.ps1"
+      ],
+      "clean": ["pwsh ./scripts/build.ps1 -clean"],
+      "copy": [
+        "pwsh ./scripts/copy.ps1 $0:?"
+      ],
+      "logcat": [
+        "pwsh ./scripts/start-logging.ps1"
+      ],
+      "qmod": [
+        "pwsh ./scripts/build.ps1",
+        "pwsh ./scripts/createqmod.ps1"
+      ],
+      "restart": [
+        "pwsh ./scripts/restart-game.ps1"
+      ],
+      "stack": [
+        "pwsh ./scripts/ndk-stack.ps1"
+      ],
+      "tomb": [
+        "pwsh ./scripts/pull-tombstone.ps1"
+      ]
+    },
+    "qmodIncludeDirs": ["./build", "./extern/libs"],
+    "qmodOutput": "./Custom Patches & Loader (Quest Standalone).qmod"
+  },
+  "dependencies": [
+    {
+      "id": "beatsaber-hook",
+      "versionRange": "^6.4.0",
+      "additionalData": {}
+    },
+    {
+      "id": "scotland2",
+      "versionRange": "^0.1.6",
+      "additionalData": {
+        "includeQmod": false
+      }
+    },
+    {
+      "id": "paper2_scotland2",
+      "versionRange": "^4.5.0",
+      "additionalData": {}
+    },
+    {
+      "id": "vso-cordl",
+      "versionRange": "0.1.0",
+      "additionalData": {}
+    }
+  ]
+}
