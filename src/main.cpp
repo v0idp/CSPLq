@@ -1,5 +1,4 @@
 #include "main.hpp"
-#include "scotland2/shared/modloader.h"
 
 static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 // Stores the ID and version of our mod, and is sent to
@@ -16,7 +15,6 @@ Configuration &getConfig() {
 // Called at the early stages of game loading
 MOD_EXTERN_FUNC void setup(CModInfo *info) noexcept {
   *info = modInfo.to_c();
-
   getConfig().Load();
 
   // File logging
@@ -31,6 +29,7 @@ MOD_EXTERN_FUNC void late_load() noexcept {
 
   PaperLogger.info("Installing hooks...");
   
+  INSTALL_HOOK(PaperLogger, SessionManager_SaveSessionAs);
   INSTALL_HOOK(PaperLogger, SynthController_SynthsDataLoaded);
 
   PaperLogger.info("Installed all hooks!");

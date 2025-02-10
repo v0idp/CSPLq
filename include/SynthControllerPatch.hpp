@@ -1,12 +1,11 @@
 #pragma once
-#include "System/zzzz__Exception_def.hpp"
+#include <exception>
 #include "VROSC/SynthController.hpp"
 #include "VROSC/SynthDataController.hpp"
-#include "AudioHelm/HelmPatchFormat.hpp"
 #include "VROSC/PatchSettings.hpp"
+#include "VROSC/InstrumentDataController.hpp"
+#include "AudioHelm/HelmPatchFormat.hpp"
 #include "UnityEngine/JsonUtility.hpp"
-#include "main.hpp"
-#include <exception>
 
 MAKE_HOOK_MATCH(SynthController_SynthsDataLoaded, &VROSC::SynthController::SynthsDataLoaded, void, VROSC::SynthController* self, VROSC::InstrumentDataController*  dataController) {
     SynthController_SynthsDataLoaded(self, dataController);
