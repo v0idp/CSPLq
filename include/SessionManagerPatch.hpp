@@ -3,7 +3,8 @@
 #include "VROSC/SessionsManager.hpp"
 #include "VROSC/SessionSaveData.hpp"
 
-MAKE_HOOK_MATCH(SessionManager_SaveSessionAs, &VROSC::SessionsManager::SaveSessionAs, System::Collections::IEnumerator*, VROSC::SessionsManager* self, VROSC::SessionSaveData*  sessionSaveData) {
+MAKE_HOOK_MATCH(SessionManager_SaveSessionAs, &VROSC::SessionsManager::SaveSessionAs, System::Collections::IEnumerator*, VROSC::SessionsManager* self, VROSC::SessionSaveData*  sessionSaveData)
+{
 
     if (sessionSaveData->IsShared)
     {

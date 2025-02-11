@@ -12,3 +12,4 @@ Same goes for `qpm s copy` and `qpm s qmod`
 * [scotland2](https://github.com/sc2ad/scotland2)
 * [paperlog](https://github.com/Fernthedev/paperlog/)
 * [this template](https://github.com/Lauriethefish/quest-mod-template)
+* [AudioFile](https://github.com/adamstark/AudioFile)

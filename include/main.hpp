@@ -24,3 +24,4 @@ constexpr auto PaperLogger = Paper::ConstLoggerContext("csplq");
 
 #include "SessionManagerPatch.hpp"
 #include "SynthControllerPatch.hpp"
+#include "SampleDatabasePatch.hpp"
