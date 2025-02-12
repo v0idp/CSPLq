@@ -35,7 +35,7 @@ on:
 
 env:
     module_id: "csplq"
-    qmod_name: "Custom Patches & Loader"
+    qmod_name: "Custom Patches & Loader (Quest Standalone)"
 
 jobs:
   build:

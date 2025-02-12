@@ -41,7 +41,7 @@
       ]
     },
     "qmodIncludeDirs": ["./build", "./extern/libs"],
-    "qmodOutput": "./Custom Patches & Loader.qmod"
+    "qmodOutput": "./Custom Patches & Loader (Quest Standalone).qmod"
   },
   "dependencies": [
     {
