@@ -7,7 +7,7 @@
     "id": "csplq",
     "author": "void*",
     "version": "0.1.0",
-    "description": "Custom Samples and Patches Loader (CSPL) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",
+    "description": "Custom Samples and Patches Loader (CSPLq) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",
     "url": null,
     "additionalData": {
       "overrideSoName": "libcsplq.so",

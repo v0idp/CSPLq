@@ -5,10 +5,23 @@
   "modloader": "Scotland2",
   "author": "void*",
   "version": "1.0.0",
-  "description": "Custom Samples and Patches Loader (CSPL) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",
-  "dependencies": [],
+  "description": "Custom Samples and Patches Loader (CSPLq) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",
+  "dependencies": [
+    {
+      "version": "^6.4.0",
+      "id": "beatsaber-hook",
+      "downloadIfMissing": "https://github.com/QuestPackageManager/beatsaber-hook/releases/download/v6.4.0/beatsaber-hook.qmod"
+    },
+    {
+      "version": "^4.5.0",
+      "id": "paper2_scotland2",
+      "downloadIfMissing": "https://github.com/Fernthedev/paperlog/releases/download/v4.5.0/paper2_scotland2.qmod"
+    }
+  ],
   "modFiles": [],
-  "lateModFiles": [],
+  "lateModFiles": [
+    "libcsplq.so"
+  ],
   "libraryFiles": [],
   "fileCopies": [],
   "copyExtensions": []
