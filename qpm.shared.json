@@ -4,7 +4,7 @@
     "sharedDir": "shared",
     "dependenciesDir": "extern",
     "info": {
-      "name": "Custom Samples & Patches Loader",
+      "name": "csplq",
       "id": "csplq",
       "version": "0.1.0",
       "description": "Custom Samples and Patches Loader (CSPLq) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",

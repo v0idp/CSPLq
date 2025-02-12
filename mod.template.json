@@ -1,6 +1,6 @@
 {
   "_QPVersion": "1.1.0",
-  "name": "Custom Samples & Patches Loader",
+  "name": "csplq",
   "id": "csplq",
   "modloader": "Scotland2",
   "author": "void*",
