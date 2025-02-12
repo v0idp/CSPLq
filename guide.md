@@ -4,7 +4,7 @@
    a) Follow the link and scroll down a little  
    b) Download a QuestPatcher-Windows-Standalone.zip or QuestPatcher-Windows.exe
 
-   <img src="docs/image1.png">
+   <img src="images/image1.png">
 
 2) Unzip the archive or install the application on your machine  
      
