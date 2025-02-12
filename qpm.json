@@ -1,7 +1,7 @@
 {
   "sharedDir": "shared",
   "dependenciesDir": "extern",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "info": {
     "name": "Custom Samples & Patches Loader",
     "id": "csplq",

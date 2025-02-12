@@ -4,7 +4,7 @@
   "id": "csplq",
   "modloader": "Scotland2",
   "author": "void*",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Custom Samples and Patches Loader (CSPL) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso",
   "dependencies": [
     {
