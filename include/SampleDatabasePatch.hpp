@@ -40,16 +40,12 @@ UnityEngine::AudioClip* loadAudioClip(std::filesystem::path path)
     AudioFile<float> audioFile;
     
     audioFile.load(path.string());
-    audioClip = audioClip->Create(path.stem().string(), audioFile.samples.size(), audioFile.getNumChannels(), audioFile.getSampleRate(), false);
 
-
-    //FIX THIS
-    //It's not interleaved correctly
-    //no sound is playing
+    //fix this
+    audioClip = audioClip->Create(path.stem().string(), audioFile.samples.size() / audioFile.getNumChannels(), audioFile.getNumChannels(), audioFile.getSampleRate(), false);
     std::vector<float> flatSamples;
-    size_t numSamples = audioFile.samples[0].size();
-    for(size_t j = 0; j < numSamples; j++) {
-        for(size_t i = 0; i < audioFile.samples.size(); i++) {
+    for(size_t i = 0; i < audioFile.getNumChannels(); i++) {
+        for(size_t j = 0; j < audioFile.getNumSamplesPerChannel(); j++) {
             flatSamples.push_back(audioFile.samples[i][j]);
         }
     }
@@ -70,7 +66,7 @@ std::vector<std::filesystem::path> getWavFiles(const std::filesystem::path& dir)
     return wavFiles;
 }
 
-void ImportAudioFilesFromDirectory(std::string directory, bool recursive)
+inline void ImportAudioFilesFromDirectory(std::string directory, bool recursive)
 {
     std::filesystem::path fsPath(directory);
     std::string dirName = (fsPath.filename().string().size() > 0) ? fsPath.filename().string() : "root";
