@@ -1,5 +1,4 @@
 #pragma once
-
 #include "VROSC/SessionsManager.hpp"
 #include "VROSC/SessionSaveData.hpp"
 

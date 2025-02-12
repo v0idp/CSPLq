@@ -13,8 +13,7 @@ MOD_EXTERN_FUNC void setup(CModInfo *info) noexcept {
   getConfig().Load();
 
   Paper::Logger::RegisterFileContextId(PaperLogger.tag);
-
-  LoadCustomSamples();
+  
   PaperLogger.info("Completed setup!");
 }
 

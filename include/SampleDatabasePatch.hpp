@@ -1,11 +1,14 @@
 #pragma once
+#include <exception>
 #include <map>
 #include <string>
 #include <filesystem>
+#include "UnityEngine/AudioClip.hpp"
 #include "VROSC/SampleDatabase.hpp"
 #include "VROSC/SampleGroup.hpp"
 #include "VROSC/SampleData.hpp"
 #include "AudioFile.hpp"
+#include "main.hpp"
 
 std::map<std::string, int> sampleGroups = {
     { "Bass Drums", 0 },
@@ -31,9 +34,80 @@ std::map<int, std::vector<VROSC::SampleData*>> samples = {
 
 bool IsSamplesInjected = false;
 
+UnityEngine::AudioClip* loadAudioClip(std::filesystem::path path)
+{
+    UnityEngine::AudioClip* audioClip = UnityEngine::AudioClip::New_ctor();
+    AudioFile<float> audioFile;
+    
+    audioFile.load(path.string());
+    audioClip = audioClip->Create(path.stem().string(), audioFile.samples.size(), audioFile.getNumChannels(), audioFile.getSampleRate(), false);
+
+
+    //FIX THIS
+    //It's not interleaved correctly
+    //no sound is playing
+    std::vector<float> flatSamples;
+    size_t numSamples = audioFile.samples[0].size();
+    for(size_t j = 0; j < numSamples; j++) {
+        for(size_t i = 0; i < audioFile.samples.size(); i++) {
+            flatSamples.push_back(audioFile.samples[i][j]);
+        }
+    }
+
+    audioClip->SetData(ArrayW<float>(flatSamples), 0);
+    return audioClip;
+}
+
+template <typename DirectoryIterator>
+std::vector<std::filesystem::path> getWavFiles(const std::filesystem::path& dir) {
+    std::vector<std::filesystem::path> wavFiles;
+    for (const auto& entry : DirectoryIterator(dir))
+    {
+        if (entry.path().extension() == ".wav") {
+            wavFiles.push_back(entry.path());
+        }
+    }
+    return wavFiles;
+}
+
 void ImportAudioFilesFromDirectory(std::string directory, bool recursive)
 {
-    //TODO: Implement this function
+    std::filesystem::path fsPath(directory);
+    std::string dirName = (fsPath.filename().string().size() > 0) ? fsPath.filename().string() : "root";
+
+    int groupId = sampleGroups["Effects"];
+    if (sampleGroups.count(dirName) > 0)
+        groupId = sampleGroups[dirName];
+
+    int index = groupId + 100;
+
+    PaperLogger.info("[{0}] Checking path: {1}", dirName, directory);
+    std::vector<std::filesystem::path> files;
+    if (recursive) files = getWavFiles<std::filesystem::recursive_directory_iterator>(directory);
+    else files = getWavFiles<std::filesystem::directory_iterator>(directory);
+
+    
+    for (const auto& file : files)
+    {
+        try
+        {
+            std::string fileName = file.stem().string();
+            UnityEngine::AudioClip* audioClip = loadAudioClip(file.string());
+            VROSC::SampleData* sampleData = VROSC::SampleData::New_ctor();
+            sampleData->_id = index++;
+            sampleData->set_name(fileName);
+            sampleData->_displayName = fileName;
+            sampleData->_audioClip = audioClip;
+            samples[groupId].push_back(sampleData);
+            
+            PaperLogger.info("[{0}] Imported {1} with id {2}", dirName, fileName, index);
+        } catch (std::exception* e)
+        {
+            PaperLogger.error("[{0}] Error importing {1}: {2}", dirName, file.stem().string(), e->what());
+            PaperLogger.error("{}", e->what());
+            continue;
+        }
+    }
 }
 
 void LoadCustomSamples()
@@ -49,6 +123,7 @@ MAKE_HOOK_MATCH(SampleDatabase_GetGroup, &VROSC::SampleDatabase::GetGroup, Unity
 {
     if (!IsSamplesInjected)
     {
+        LoadCustomSamples();
         for (int i = 0; i < self->_samplegroups.size(); i++)
         {
             int id = self->_samplegroups.get(i)->Id;
