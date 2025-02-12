@@ -41,12 +41,11 @@ UnityEngine::AudioClip* loadAudioClip(std::filesystem::path path)
     
     audioFile.load(path.string());
 
-    // Fix 2x speed bug
-    audioClip = audioClip->Create(path.stem().string(), audioFile.getNumSamplesPerChannel() / audioFile.getNumChannels(), audioFile.getNumChannels(), audioFile.getSampleRate(), false);
+    audioClip = audioClip->Create(path.stem().string(), audioFile.getNumSamplesPerChannel(), audioFile.getNumChannels(), audioFile.getSampleRate(), false);
     std::vector<float> flatSamples;
-    for(size_t i = 0; i < audioFile.getNumChannels(); i++) {
-        for(size_t j = 0; j < audioFile.getNumSamplesPerChannel(); j++) {
-            flatSamples.push_back(audioFile.samples[i][j]);
+    for(size_t i = 0; i < audioFile.getNumSamplesPerChannel(); i++) {
+        for(size_t j = 0; j < audioFile.getNumChannels(); j++) {
+            flatSamples.push_back(audioFile.samples[j][i]);
         }
     }
 
