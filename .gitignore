@@ -5,3 +5,4 @@ ndkpath.txt
 *.qmod
 .cache/
 *.log
+*.cmake
