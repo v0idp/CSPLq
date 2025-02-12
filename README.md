@@ -1,3 +1,7 @@
+<a href="https://www.paypal.com/donate/?hosted_button_id=8P88J2VCVV9A4">
+    <img title="PayPal Donation" src="https://img.shields.io/badge/Donate-PayPal-blue.svg" >
+</a>
+
 # Custom Patches & Loader (Quest Version)
 
 Custom Samples and Patches Loader (CSPLq) is a custom loader which loads all your samples & helm patches into the VR game Virtuoso
