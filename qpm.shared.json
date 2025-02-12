@@ -47,7 +47,7 @@
         "./extern/libs"
       ],
       "qmodIncludeFiles": [],
-      "qmodOutput": "./Custom Patches & Loader (Quest Standalone).qmod"
+      "qmodOutput": "./csplq.qmod"
     },
     "dependencies": [
       {
