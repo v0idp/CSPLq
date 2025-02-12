@@ -16,7 +16,7 @@ if(NOT DEFINED CMAKE_ANDROID_NDK)
     message(Big time error buddy, no NDK)
 endif()
 
-echo CMAKE_ANDROID_NDK: ${CMAKE_ANDROID_NDK}
+message(STATUS "CMAKE_ANDROID_NDK: ${CMAKE_ANDROID_NDK}")
 
 string(REPLACE "\\" "/" CMAKE_ANDROID_NDK ${CMAKE_ANDROID_NDK})
 
