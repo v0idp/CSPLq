@@ -6,6 +6,9 @@ Custom Samples and Patches Loader (CSPLq) is a custom loader which loads all you
 Use `qpm s build` to build
 Same goes for `qpm s copy` and `qpm s qmod`
 
+## Guide
+[Go to GUIDE](GUIDE.md)
+
 ## Credits
 
 * [vso-cordl](https://github.com/v0idp/vso-cordl)
